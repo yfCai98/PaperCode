@@ -2,7 +2,6 @@ clear;clc;close all;
 load('data2.mat');
 figure
 %% fig2.b
-
 subplot(2,4,1);hold on;
 color_matrix = [addcolorplus(9);addcolorplus(5);addcolorplus(2);addcolorplus(1)];
 for i = 1:12
@@ -14,29 +13,28 @@ for i = 1:12
 end
 xlim([0 13]);
 set(gca,'FontSize',12,'XTick',1:12);
+xtickangle(0);
 ylabel({'Num of trials'},'FontSize',15);
 xlabel({'Block'},'FontSize',15);
-legend({'No tone','25%','50%','75%'},'FontSize',10,'Location','best');
+legend({'No tone','25% Threshold','50% Threshold','75% Threshold'},'FontSize',10,'Location','best');
 set(gca,'FontName','Arial');
 %% fig2.c
 num = size(alldegree,1);
 map_now =[addcolorplus(62);addcolorplus(256);addcolorplus(252)];
-ynamne = {'ACC rate','Hit rate','','FA num'};
+ynamne = {'ACC rate','Hit rate','FA num'};
 subplot(2,4,2);
 for c =1:2
 hold on
-errorbar(1:12,mean(alldata{c}),std(alldata{c})/sqrt(num),'o','Markersize',5,...
+errorbar(1:12,mean(alldata{c}),std(alldata{c})/sqrt(num),'o','Markersize',7,...
     'MarkerFaceColor',map_now(c,:),'MarkerEdgeColor',map_now(c,:),'LineWidth',1,'Color','k');
 end  
 ylim([0 1]);
 set(gca,'FontSize',12,'YTick',0:0.2:1);
-plot([0 14],[0.6 0.6],'r--','LineWidth',1);
 ylabel('Probability','FontSize',15);
-
 yyaxis right;
 set(gca, 'YColor', 'k');
 fatrial = alldata{3}.*repmat([2 8 11 12 13 14 14 14 14 14 14 14],num,1);
-errorbar(1:12,mean(fatrial),std(fatrial)/sqrt(num),'o','Markersize',5,...
+errorbar(1:12,mean(fatrial),std(fatrial)/sqrt(num),'o','Markersize',7,...
     'MarkerFaceColor',map_now(3,:),'MarkerEdgeColor',map_now(3,:),'LineWidth',1,'Color','k');
 ylim([0 8]);
 legend(ynamne,'FontSize',10,'box','off','location','best');
@@ -45,12 +43,12 @@ ylabel('Trial num','FontSize',15);
 xlim([0 13]);
 set(gca,'FontName','Arial');
 %% fig2.d
-num = size(alldegree,1);
-map = addcolorplus(2);
+barmap = addcolorplus(5);
+dotmap = addcolorplus(2);
 subplot(2,4,3);
-errorbar(1:4, mean(alldegree, 1), std(alldegree, 1) / sqrt(num), 'o', 'Markersize', 5, ...
-    'MarkerFaceColor', map, 'MarkerEdgeColor', map, 'LineWidth', 1, 'Color', 'k');
+Plinebar(alldegree,barmap,dotmap);
 set(gca,'FontSize',12,'XTick',1:4,'XTickLabel',{'No tone','25%','50%','75%'});
+xtickangle(0);
 set(gca,'FontSize',12,'YTick',0:0.2:1);
 set(gca, 'Box', 'off');
 ylabel({'Signal choice'},'FontSize',15);
@@ -70,54 +68,38 @@ end
 caxis([2.8, 3.8]);
 % colorbar
 set(gca,'FontSize',12,'XTick',[1 2 3 4],'XTickLabel',{'No tone','25%','50%','75%'});
+xtickangle(0);
 set(gca,'FontSize',12,'YTick',[1 2 3],'YTickLabel',{'Yes','No','All'});
 ylabel('Chosice','FontSize',15);
 xlabel('Intensity of tone','FontSize',15);
 colormap(addcolorplus(276));
 set(gca,'FontName','Arial');
 %% fig2.f
-num = size(alldegree,1);
-map = addcolorplus(62);
-
+barmap = addcolorplus(5);
+dotmap = addcolorplus(62);
+allacc = allconacc(:,:,2);
 subplot(2,4,5);
-conacc_mean = squeeze(mean(allconacc));
-conacc_std = squeeze(std(allconacc));
-errorbar(1:4,conacc_mean(:,2),conacc_std(:,2)/sqrt(num),'o','Markersize',5,...
-    'MarkerFaceColor',map,'MarkerEdgeColor',map,'LineWidth',1,'Color','k');
+allacc(find(sum(isnan(allacc),2)),:)=[];
+Plinebar(allacc,barmap,dotmap)
 set(gca,'FontSize',12,'XTick',1:4,'XTickLabel',{'1','2','3','4'});
 ylabel('ACC','FontSize',15);
 xlabel('Confidence degree','FontSize',15 );
 xlim([0 5]);
-ylim([0.2 0.9]);
-yyaxis right;hold on;
-set(gca, 'YColor',addcolorplus(2));
-plotallconacc = sum(allconacc(:,:,3));
-plotallconacc1 = [ones(1,plotallconacc(1)),2*ones(1,plotallconacc(2)),3*ones(1,plotallconacc(3)),4*ones(1,plotallconacc(4))];
-histogram(plotallconacc1,'FaceColor',addcolorplus(6))
-ylabel('All trials','FontSize',15);
+ylim([0 1]);
 
 set(gca, 'Box', 'off');
 set(gca,'FontName','Arial');
 %% fig2.g
-num = size(alldegree,1);
-map = addcolorplus(252);
-
+barmap = addcolorplus(5);
+dotmap = addcolorplus(252);
 subplot(2,4,6);
-CH_con_mean = squeeze(mean(allCH_con,1));
-CH_con_std = squeeze(std(allCH_con,1));
-CH_con_all = sum(allCH_con(:,:,2),1);
-plotCHconall = [ones(1,CH_con_all(1)),2*ones(1,CH_con_all(2)),3*ones(1,CH_con_all(3)),4*ones(1,CH_con_all(4))];
-errorbar(1:4,CH_con_mean(:,2),CH_con_std(:,2)/sqrt(num),'o','Markersize',5,...
-    'MarkerFaceColor',map,'MarkerEdgeColor',map,'LineWidth',1,'Color','k');
+CHnum = squeeze(allCH_con(:,:,2));
+% Pdotbar(CHnum,barmap,dotmap);
+Plinebar(CHnum,barmap,dotmap);
 set(gca,'FontSize',12,'XTick',1:4,'XTickLabel',{'1','2','3','4'});
-ylabel('Mean trials of FA','FontSize',15);
+ylabel('Trials of FA','FontSize',15);
 xlabel('Confidence degree','FontSize',15 );
-ylim([0 20]);
-yyaxis right;
-set(gca, 'YColor',addcolorplus(2));
-histogram(plotCHconall,'FaceColor',addcolorplus(6));
-xlim([0 5]);
-ylabel('All trials of FA','FontSize',15 );
+ylim([0 55]);
 
 set(gca, 'Box', 'off');
 set(gca,'FontName','Arial');
