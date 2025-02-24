@@ -14,15 +14,15 @@ lmeModel_now = lmeModel_now{1}
 color_matrix= [addcolorplus(179);addcolorplus(160);addcolorplus(3)];
 
 figure
-onsetFA = mean(FAnow)
+onsetFA = mean(FAnow);
 onsetFAstd = std(FAnow)/sqrt(length(FAnow));
-onsetHit = mean(Hitnow)
+onsetHit = mean(Hitnow);
 onsetHitstd = std(Hitnow)/sqrt(length(Hitnow));
 
 hold on
 y=[onsetHit,onsetFA];
 errory = [onsetHitstd,onsetFAstd];
-h = bar(y,'FaceColor',addcolorplus(4));
+h = bar(y,'FaceColor',addcolorplus(5));
 for errori = 1:size(y,2)
 if y(errori)>0
 errorbar(errori, y(errori), [], errory(errori),'.k','LineWidth',1.5,'CapSize',25);
