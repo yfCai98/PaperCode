@@ -1,7 +1,6 @@
-clear;clc;
+%% fig4.d left:AAC
 titlename = 'AAC: Gamma(30-150Hz)'; 
 load('fig4e_AAC.mat');
-% 
 colorall = [addcolorplus(73);addcolorplus(130)];
 
 pdatamean1 = squeeze(mean(covCorrS(:,1,:)))';
@@ -52,7 +51,7 @@ title(titlename,'FontSize',25);
 xlabel('Time(s)','FontName','arial','FontSize',25);
 ylabel('Coefficient','FontName','arial','FontSize',25);
 set(gca,'FontName','Times New Roman','FontWeight','bold');
-%%
+%% fig4.d right:IFG
 subplot(1,2,2);hold on;
 titlename = 'IFG: Beta(16-30Hz)'; 
 load('fig4e_Beta.mat');

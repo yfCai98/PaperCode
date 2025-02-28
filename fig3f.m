@@ -1,9 +1,10 @@
+%% fig3.f
 load('fig3f.mat');
 flow = 2:30;
 fup = 20:5:150;
-
+%% Phase-amplitude coupling contrast results
 figure
-subplot(1,3,1);
+subplot(1,2,1);
 hold on
 FCclust_ori_new=FSplotbefore(FCclust_ori,FCp_sort,FCclust_size);
 pcolor(FCtvalue');
@@ -28,7 +29,7 @@ axis xy
 colorbar
 set(gca,'FontName','Times New Roman','FontWeight','bold');
 
-subplot(1,3,2);
+subplot(1,2,2);
 hold on
 FHclust_ori_new=FSplotbefore(FHclust_ori,FHp_sort,FHclust_size);
 pcolor(FHtvalue');
@@ -56,4 +57,4 @@ set(gca,'FontName','Times New Roman','FontWeight','bold');
 map1 = addcolorplus(293);
 map1 = flip(map1, 1);
 colormap(map1);
-set(gcf,'position',[0,0,1700 400]);
+set(gcf,'position',[0,0,1000 400]);

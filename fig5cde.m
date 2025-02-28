@@ -1,12 +1,10 @@
-%% plot
+%% fig5
 clear;clc;close all;
-load('figcde.mat')
+load('fig5cde.mat')
 map_now =[addcolorplus(62);addcolorplus(256);addcolorplus(160)];
 mapnow2 = [addcolorplus(94);addcolorplus(49)];
-%% a
-figure
-subplot(1,3,1)
-hold on
+%% fig5.a
+figure;subplot(1,3,1);hold on;
 num = 8
 SignalChose_no = squeeze(SignalChose(:,1,:));
 SignalChose_s = squeeze(SignalChose(:,2,:));
@@ -26,7 +24,7 @@ ylabel('Signal choice','FontName','arial','FontSize',15);
 xlabel('Signal db','FontName','arial','FontSize',15);
 set(gca,'FontName','Arial');
 xlim([0 5]);
-%% b
+%% fig5.b
 subplot(1,3,2);hold on;
 Behavior2_nos = squeeze(nanmean(Behavior2_cov(:,1,:),2));
 Behavior2_sti = squeeze(nanmean(Behavior2_cov(:,2,:),2));
@@ -62,7 +60,7 @@ set(gca,'FontSize',15,'XTick',[1.5 4.5 7.5]);
 set(gca,'FontSize',15,'XTick',[1.5 4.5 7.5],'XTickLabel',{'ACC rate','Hit rate','FA rate'});
 xlim([0 9]);
 set(gca,'FontName','Arial');
-%% c
+%% fig5.c
 subplot(1,3,3);hold on;
 Behavior2_nos = squeeze(nanmean(Behavior2_cov(:,1,:),2));
 Behavior2_sti = squeeze(nanmean(Behavior2_cov(:,2,:),2));

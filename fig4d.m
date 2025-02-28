@@ -1,7 +1,7 @@
-clear;clc;
+%% fig4.d
 load('fig4d.mat');
-
-X = CHAT_score_ALL(:,1); % H_score  or CH_all(:,2)
+%% linear regression
+X = CHAT_score_ALL(:,1); % CHAT_score_ALL or CH_all(:,2)
 Y =  allnu; % allnu allbeta allomega  allseita
 
 [mdl_clean,outidk] = fitlm_clean(X,Y);

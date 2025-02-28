@@ -1,10 +1,9 @@
-clear;clc;
+%% fig3.g
 load('fig3g.mat');
-
+%% phase distribution for all conditions
 colorall = [addcolorplus(160);addcolorplus(179);addcolorplus(3)];
 figure;
 hold on;
-
 scatter(1:6, mean(phase_Hit50,2), 600, 'filled', 'MarkerFaceColor', colorall(2,:),'MarkerEdgeColor',colorall(2,:),'MarkerEdgeAlpha', 0.4,'MarkerFaceAlpha', 0.4);
 for ci = 1:6
     scatter(ci*ones(77,1) + randn(77,1)*0.1, phase_Hit50(ci,:),18, 'MarkerEdgeColor', colorall(2,:),'MarkerEdgeAlpha', 1,'MarkerFaceColor',colorall(2,:), 'MarkerFaceAlpha', 1);

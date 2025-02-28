@@ -1,5 +1,6 @@
 %% fig3.c
 load('fig3c.mat')
+%% Time-frequency contrast results
 figure
 subplot(2,2,1);
 hold on
@@ -18,12 +19,10 @@ contour(FHclust_ori_new,[-0.18 0.23],'k','LineWidth',2);
 caxis([-4, 4]);
 title('FA - Hit','FontSize',25);
 plotquick
-
 map1 = addcolorplus(293);
 map1 = flip(map1, 1);
 colormap(map1);
-
-% plot line
+%% gamma contrast oscillations 
 setgap = 0.25;
 maxvalue = max([nanmean(FA_new),nanmean(CR_new) nanmean(Hit_new50)])+setgap;
 minvalue = min([nanmean(FA_new),nanmean(CR_new) nanmean(Hit_new50)])-setgap;
@@ -57,7 +56,6 @@ if ~isempty(find(p_FH<0.05))
            'EdgeColor', 'none', 'FaceColor', [0.7, 0.7, 0.7]);
     end 
 end
-
 plot(1:length(Hit_new50), nanmean(Hit_new50),'Color',colorall(3,:),'LineWidth', 2);
 fill([1:size(plotdataHit50,1) size(plotdataHit50,1):-1:1], [plotdataHit50(:,2)', fliplr(plotdataHit50(:,3)')], ...
     colorall(3,:), 'EdgeAlpha', 0, 'FaceAlpha', 0.15);

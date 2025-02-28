@@ -1,5 +1,5 @@
 clear;clc;close all;
-load('data2.mat');
+load('fig2.mat');
 figure
 %% fig2.b
 subplot(2,4,1);hold on;

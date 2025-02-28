@@ -1,5 +1,6 @@
+%% fig3.d
 load('fig3d.mat');
-%% LME
+%% LME for onset time for gamma oscillations 
 data1 = covFAonset*10;
 data2 = covHitonset*10;
 

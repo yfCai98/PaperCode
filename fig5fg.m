@@ -1,6 +1,6 @@
-clear;clc;
-load('figfg.mat')
-%% f
+%% fig5
+load('fig5fg.mat')
+%% fig5.f left
 namenow = {'','No Stimulus','','Stimulus'};
 titlename = {'FA: Beta'};
 colorall = [addcolorplus(94);addcolorplus(49)];    
@@ -30,10 +30,10 @@ ylabel('Beta power','FontSize',15);
 set(gca, 'Linewidth', 0.5);
 title(titlename,'FontSize',15);
 set(gca,'FontName','Arial');
-
+%% fig5.f right
 subplot(1,3,2);hold on;
 rectangle('Position', [10, -2, 42, 4],...
-    'EdgeColor', 'none', 'FaceColor', [0.7, 0.7, 0.7]);
+    'EdgeColor', 'none', 'FaceColor', addcolorplus(4));
 sitenow = find(clustnow==1);
 plot(sitenow,1.6*ones(1,length(sitenow)),'k-','lineWidth',3);
 plot(1:length(FA_new_NS), nanmean(FA_new_NS),'Color',colorall(1,:),'LineWidth', 2);
@@ -53,7 +53,7 @@ legend(namenow,'FontSize',15,'Location','best','box','off');
 title(titlename,'FontSize',15);
 set(gca,'FontName','Arial');
 set(gcf,'position',[0,0,1000 400]);
-%% g
+%% fig5.g
 FAchange = [0.1333    0.0167    0.0667   0    0.0417    0.0167   -0.0333    0.0500];
 subunique = unique(suball_NS);
 diffFA = nan(1,length(subunique));

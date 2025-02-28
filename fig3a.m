@@ -1,4 +1,4 @@
-%%
+%% fig3.a
 clear;clc;
 load('fig3a.mat');
 close all

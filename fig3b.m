@@ -1,4 +1,6 @@
+%% fig3.b
 load('fig3b.mat');
+%% Time-frequency results for all hit
 figure
 subplot(2,1,1);
 hold on
@@ -8,12 +10,10 @@ contour(Hitclust_ori_new,[-0.18 0.23],'k','LineWidth',2);
 caxis([-4, 4]);
 title('All Hit','FontSize',20);
 plotquick
-%colorbar
 map1 = addcolorplus(293);
 map1 = flip(map1, 1);
 colormap(map1);
-
-% plot line
+%% gamma contrast oscillations for all hit and miss
 colorall = [addcolorplus(17);addcolorplus(240)];
 subplot(4,1,3)
 hold on
@@ -36,4 +36,4 @@ plotquick2
 xlim([1 length(Missall_new)]);
 ylim([-0.1 1]);
 legend({'All Hit','','All Miss',''},'FontSize',10,'Location','best','box','off');
-set(gcf,'position',[0,0,600 680]);
+set(gcf,'position',[0,0,400 680]);

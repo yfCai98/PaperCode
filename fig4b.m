@@ -1,4 +1,6 @@
+%% fig4.b
 load('fig4b.mat');
+%% Mean trajectories of perceptual beliefs
 figure
 ylabname = {'μ1','μ2','μ3'};
 for f = 1:3

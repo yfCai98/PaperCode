@@ -1,4 +1,6 @@
+%% fig4.c
 load('fig4c.mat');
+%%  prior beliefs for three conditions
 barmap = addcolorplus(5);
 dotmap = [addcolorplus(179);addcolorplus(160);addcolorplus(3)];
 ylimnum=[0 0.7;-0.85 0.65;0 1.2];
